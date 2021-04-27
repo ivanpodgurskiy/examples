@@ -1,0 +1,33 @@
+<!-- <div >
+  <div class="modal-header">
+    <h5 class="modal-title" [ngClass]="{'playbookassets': assetInfo.heading == 'playbook assets'}" id="exampleModalLabel">{{assetInfo.heading | uppercase}}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="content-wrap assetpopup" malihu-scrollbar [scrollbarOptions]="themeOptions">
+      <div class="row padd-15">
+        <div class="col-md-12">
+          <h5>{{assetInfo.title}}</h5>
+          <a href="{{link}}" class="default-link" target="__blank">{{assetInfo.url}}</a>
+          <p class="mt-4" [innerHTML]="assetInfo.description | safeHtml"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="modal-header">
+  <h5 class="modal-title" [ngClass]="{'playbookassets': assetInfo.heading == 'playbook assets'}" id="exampleModalLabel">{{assetInfo.heading | uppercase}}</h5>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body colorGrey pr-0">
+  <div class="content-wrap assetpopup" malihu-scrollbar [scrollbarOptions]="themeOptions">
+  <h5>{{assetInfo.title}}</h5>
+  <a href="{{link}}" class="default-link" target="__blank">{{assetInfo.url}}</a>
+  <p class="mt-4" [innerHTML]="assetInfo.description | safeHtml"></p>
+  </div>
+</div>

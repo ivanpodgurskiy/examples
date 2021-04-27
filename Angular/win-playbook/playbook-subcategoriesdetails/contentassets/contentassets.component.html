@@ -1,0 +1,66 @@
+<div class="review-wrap mt-5" *ngIf="currentCategoryData.company_category_type != 3">
+  <h3>{{assetHeading}}</h3>
+  <div class="d-flex flex-row review-drop align-items-center mb-4 flex-wrap">
+
+    <app-multiselect [hidden]="hideSolutions" [selectedItems]="selectedItems" [data]="successCases"
+      (onValueChange)='displayOptionsForCases($event)' [selectAllText]="'All'" [prefixText]="prefixForSolution"
+      [postfixText]="postfixForSolution">
+    </app-multiselect>
+
+    <app-multiselect [data]="markets" [selectedItems]="selectedItemsForSegments" (onValueChange)='displayOptionsForSegment($event)'
+      [selectAllText]="'All'" [prefixText]="prefixForSegment" [postfixText]="postfixForSegment">
+    </app-multiselect>
+
+    <!-- <app-multiselect [hidden]="hideSolutions" [data]="assetsCases" (onValueChange)='displayOptionsForAssets($event)' [selectAllText]="'All'" [prefixText]="'&nbsp;with'" [postfixText]="'assets'">
+      </app-multiselect> -->
+
+  </div>
+
+  <div class="row review-card">
+    <div class="col-6 mb-3">
+      <h3 [ngClass]="{'success':reviewExampleTitle == 'success cases'}">{{reviewExampleTitle}}</h3>
+    </div>
+
+    <div class="col-6 mb-3">
+      <div class="dropdown d-flex justify-content-end mt-3">
+        <button [hidden]="hideSortByButton" class="btn btn-light" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{'CONTENT_ASSETS.sortBy' | translate}}
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-item" [ngClass]="{'activeSortCase':sortCase == 'Title(Ascending)'}"
+            (click)="sortCases('title','asc')">{{'CONTENT_ASSETS.titleAsc' | translate}}</div>
+          <div class="dropdown-item" [ngClass]="{'activeSortCase':sortCase == 'Title(Descending)'}"
+            (click)="sortCases('title','desc')">{{'CONTENT_ASSETS.titleDsc' | translate}}</div>
+          <div class="dropdown-item" [ngClass]="{'activeSortCase':sortCase == 'Date(Ascending)'}"
+            (click)="sortCases('crd','asc')">{{'CONTENT_ASSETS.dateAsc' | translate}}</div>
+          <div class="dropdown-item" [ngClass]="{'activeSortCase':sortCase == 'Date(Descending)'}"
+            (click)="sortCases('crd','desc')">{{'CONTENT_ASSETS.dateDsc' | translate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 mb-3" (click)="getAssetsInfo(contentAsset)" *ngFor="let contentAsset of contentAssets">
+      <div class="card h-100" (click)="openDetailsPopup(contentAsset)">
+        <div class="card-body h-100">
+          <h5 class="card-title">{{contentAsset.title}}</h5>
+          <p class="card-text assets-card">{{stripText(contentAsset.description)}}</p>
+          <a *ngIf="reviewExampleTitle != 'success cases'" class="btn">{{contentAsset.url}}</a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="contentAssets && contentAssets.length == 0"
+      class="text-center msg-no-result w-100 d-flex align-items-center justify-content-center">
+      <span>{{'CONTENT_ASSETS.noResult' | translate}}</span>
+    </div>
+  </div>
+  <div class="row mb-5 pagination">
+    <div class="col-md-12 d-flex justify-content-end">
+      <button (click)="gotoPrevious()" [hidden]="hidePaginationButton" class="btn prve"
+        [ngClass]="{'active':activePreviousButton}" [disabled]="!activePreviousButton"><i
+          class="fa fa-angle-left"></i></button>
+      <button (click)="gotoNext()" [hidden]="hidePaginationButton" class="btn next"
+        [ngClass]="{'active':activeNextButton}" [disabled]="!activeNextButton"><i
+          class="fa fa-angle-right"></i></button>
+    </div>
+  </div>
+</div>

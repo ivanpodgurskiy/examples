@@ -1,0 +1,27 @@
+<div [ngClass]="{'padding-btm-70':activeCategory && activeCategory.categoryType == 3}">
+  <h3 class="main-heading">{{ details.title }}</h3>
+  <div class="video-wrap d-flex mb-5 flex-column flex-md-row">
+    <div class="sec-video" (click)="playVideo()" [ngStyle]="{'background-image':'url(' + playBookSubcatVidThumb + ')'}">
+    </div>
+    <div class="video-link" *ngIf="details && details.videos && details.videos.length > 0">
+      <div class="vid-links" malihu-scrollbar [scrollbarOptions]="themeOptions"
+        [ngClass]="{'noscroll':details.videos.length < 3}">
+        <ul>
+          <li id="video-{{vd.id}}" *ngFor="let vd of details.videos"
+            [ngClass]="{'activeVideo':currentVideo.id == vd.id}" (click)="activeVideo(vd)">
+            <button role="button"><img src="assets/images/play-icon.png" alt="">{{vd.name}}</button>
+          </li>
+        </ul>
+      </div>
+      <div class="vid-details" malihu-scrollbar [scrollbarOptions]="themeOptions">
+        <p [innerHTML]="playBookSubcatVidDesc | safeHtml"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 video-desc">
+      <p [innerHTML]="details.description | safeHtml"></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+@import 'src/styles.scss';
+.msg-no-result{
+    color: $text-color;
+}
+.content-wrap {
+    width: 920px;
+    margin-left: 35px;
+    h3 {
+        font-family: $font-medium;
+        font-size: $font-size-regular + 14;
+        margin: 0;
+        padding: 30px 0px;
+    }
+    p {
+        font-family: $font-reg;
+        font-size: $font-size-regular;
+        color: $sec-text-color;
+    }
+    .pera-italic {
+        font-family: $font-reg-italic;
+        color: $prime-text-color;
+    }
+    .heading-two {
+        font-family: $font-black;
+        font-size: $font-size-regular;
+        color: $prime-text-color;
+    }
+    .list-default {
+        list-style-type: none;
+        li {
+            font-family: $font-reg;
+            font-size: $font-size-regular;
+            color: $sec-text-color;
+            margin: 15px 0;
+            &::before {
+                content: "\2022";
+                color: $prime-text-color;
+                font-weight: bold;
+                display: inline-block;
+                width: 1em;
+                margin-left: -1em;
+                font-size: 25px;
+                line-height: 0;
+                vertical-align: middle;
+            }
+        }
+    }
+    .review-wrap {
+        h3 {
+            font-family: $font-reg;
+            font-size: $font-size-regular + 6;
+        }
+        .review-drop {
+            border-bottom: 1px solid $sec-color-light;
+            padding-bottom: 20px;
+            p {
+                margin: 0;
+            }
+            button {
+                color: $prime-color;
+                font-family: $font-medium;
+                font-size: $font-size-regular;
+                padding: 0;
+                border: 0;
+                vertical-align: initial;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+        .content-wrap {
+            margin: 0 auto;
+        }
+}
+
+@media only screen and (max-device-width: 812px) and (orientation: landscape) {
+    .content-wrap {
+        padding: 0 15px;
+    }  
+}
+
+@media screen and (max-width: 768px) {
+    .content-wrap {
+        width: 100%;
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 567px) {
+    .content-title {
+        width: 100%;
+    }
+    .content-wrap {
+        width: 100%;
+        padding: 15px;
+    }
+}

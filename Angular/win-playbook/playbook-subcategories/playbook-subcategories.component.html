@@ -1,0 +1,59 @@
+<div class="main-content ml-auto">
+  <div class="row">
+    <div class="content-title col-md-12 d-flex">
+      <h1>{{ activeCategoryDetails['name'] }}</h1>
+      <button *ngIf="( (playBookSubcategories) && (playBookSubcategories.length > 0) )"
+        class="btn ml-auto sub-menu sub-menu-button" (click)="toggleSubCategoryBar()"><img class="sub-menu-button"
+          src="assets/images/more-button.svg" alt=""></button>
+    </div>
+  </div>
+
+  <div class="row cover">
+    <div class="content-link-wrap">
+      <div class="content-link" malihu-scrollbar [scrollbarOptions]="themeOptions">
+        <button class="btn close-bttn" (click)="toggleSubCategoryBar()"><img src="assets/images/close-icon.svg"
+            alt=""></button>
+        <ul class="subcategory-ul" *ngIf="activeCategoryDetails && activeCategoryDetails.company_category_type != 3">
+          <li id="link-{{sc.id}}" *ngFor="let sc of playBookSubcategories">
+            <a [routerLink]="['/playbook', id , sc.id]" routerLinkActive="active">{{sc.title}}</a>
+          </li>
+        </ul>
+        <div *ngIf="activeCategoryDetails && activeCategoryDetails.company_category_type == 3">
+          <div>
+            <h6>{{'PLAYBOOK.capabilities' | translate}}</h6>
+            <div [hidden]="!disableNoResultForCapabalities" class="noresult">
+              {{'PLAYBOOK.noCapabilities' | translate}}</div>
+            <ul class="subcategory-ul capabilities">
+              <div *ngFor="let sc of playBookSubcategories">
+                <li id="link-{{sc.id}}" *ngIf="sc.question_type == 'Capability'">
+                  {{disableNoResultForCap()}}
+                  <a [routerLink]="['/playbook', id , sc.id]" routerLinkActive="active">{{sc.title}}</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+          <div>
+            <h6>{{'PLAYBOOK.objections' | translate}}</h6>
+            <div [hidden]="!disableNoResultForObjections" class="noresult">{{'PLAYBOOK.noObjections' | translate}}
+            </div>
+            <ul class="subcategory-ul objections">
+              <div *ngFor="let sc of playBookSubcategories">
+                <li id="link-{{sc.id}}" *ngIf="sc.question_type == 'Objections'">
+                  {{disableNoResultForObj()}}
+                  <a [routerLink]="['/playbook', id , sc.id]" routerLinkActive="active">{{sc.title}}</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="playbook-details" [ngClass]="{'no-result': playBookSubcategories && playBookSubcategories.length == 0}">
+      <div class="msg-no-result d-flex flex-column justify-content-center aglin-items-center text-center"
+        *ngIf="playBookSubcategories && playBookSubcategories.length == 0">
+        <span>{{'PLAYBOOK.pageNotAssociated' | translate}}</span>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

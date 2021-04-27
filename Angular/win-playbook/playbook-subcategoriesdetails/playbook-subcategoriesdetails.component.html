@@ -1,0 +1,10 @@
+<div class="content-wrap">
+  <div class="msg-no-result d-flex flex-column justify-content-center aglin-items-center text-center" *ngIf="categoryOrSubcategoryNotFound">
+    <span>{{'PLAYBOOK.noResult' | translate}}</span>
+  </div>
+
+  <div *ngIf="playBookSubcategoryDetails">
+    <app-videoasset [subCategoryObject]="playBookSubcategoryDetails" [activeCategory]="activeCategoryDetails"></app-videoasset>
+    <app-contentassets *ngIf="activeCategoryDetails && activeCategoryDetails.company_category_type != 3" [subCategoryObject]="playBookSubcategoryDetails" [companyPk]="companyPK" [activeCategory]="activeCategoryDetails"></app-contentassets>
+  </div>
+</div>

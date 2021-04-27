@@ -1,0 +1,140 @@
+
+@import 'src/styles.scss';
+.msg-no-result{
+  height: 300px;
+  color: $text-color;
+}
+
+.review-wrap{
+font-size:  $font-size-regular + 2;
+h3{
+  font-family: $font-reg;
+  font-size:  $font-size-regular + 6;
+  padding: 20px 0px 20px 0px;
+  margin: 0;
+  color: $text-color;
+}
+.review-drop{
+  border-bottom: 1px solid $sec-color-light;
+  padding-bottom: 20px;
+  p{
+    margin: 0 5px 0 0;
+  }
+  span{
+    cursor: pointer;
+    color: $prime-color;
+    font-family: $font-medium;
+    font-size:  $font-size-regular;
+    padding: 0;
+    border: 0;
+    vertical-align: initial;
+    margin: 0 5px 0 0;
+  }
+}
+
+.review-card{
+  .success {
+    color: #04ba04;
+  }
+  h3{
+    color: $organe;
+    font-size:  $font-size-regular + 3;
+    font-family: $font-bold;
+    margin: 15px 0 0px 0;
+    padding: 0;
+    text-transform: uppercase;
+  }
+  .dropdown{
+    .btn{
+      padding: 5px 10px;
+      background: $bd-color;
+    }
+    .dropdown-menu{
+        .dropdown-item{
+          font-size:  $font-size-regular - 1;
+          font-family: $font-reg;
+          cursor: pointer;
+          &:active{
+            background:$prime-color;
+          }
+        }
+    }
+
+  }
+  .card{
+    cursor: pointer;
+    @include box-shadow-two;
+    .card-title{
+      font-size:  $font-size-regular + 6;
+    }
+    .card-text{
+      font-size:  $font-size-regular - 1;
+      margin: 0;
+
+
+    }
+    .assets-card{
+      min-height: 80px;
+    }
+    .btn{
+      color: $prime-color;
+    }
+    a.btn{
+      width: 100%;
+      overflow: hidden;
+      text-align: left;
+    }
+  }
+  .btn{
+    font-family: $font-medium;
+    font-size:  $font-size-regular;
+    padding: 0;
+
+  }
+}
+.pagination{
+  .prve{
+    width: 26px;
+    height: 26px;
+    border: 2px solid $prime-bd-color;
+    border-radius: $border-radius;
+    padding: 0;
+    margin: 0 10px 0 0;
+    background: $prime-color-light;
+    color: $bd-color;
+    i{
+      font-size: 20px;
+      margin-left: -2px;
+    }
+    &:hover, &:focus  {
+      color: $prime-color-dark;
+
+  }
+  }
+  .next{
+    width: 26px;
+    height: 26px;
+    border: 2px solid $prime-bd-color;
+    border-radius: $border-radius;
+    padding: 0;
+    background: $prime-color-light;
+    color: $bd-color;
+    i{
+      font-size: 20px;
+      margin-left: 2px;
+    }
+    &:hover, &:focus {
+        color: $prime-color-dark;
+      }
+    }
+    .active{
+      color: $prime-color-dark;
+    }
+  }
+}
+
+@media screen and (max-width: 1366px){
+  .review-wrap{
+    font-size:  $font-size-regular;
+  }
+}
